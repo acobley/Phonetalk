@@ -11,7 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Xna.Framework;
-using PhoneApp1.ServiceReference2;
+using PhoneApp1.ServiceReference1;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.ObjectModel;
 
@@ -19,7 +19,7 @@ namespace PhoneApp1
 {
     public partial class PanoramaPage1 : PhoneApplicationPage
     {
-        string AppId = "UserYourAppId";
+        string AppId = "5F5C1D99B36EE9D46AF6F54F1796C14B74601FFF";
 
         public PanoramaPage1()
         {
@@ -33,7 +33,7 @@ namespace PhoneApp1
             try
             {
                 FrameworkDispatcher.Update();
-                var objTranslator = new ServiceReference2.LanguageServiceClient();
+                var objTranslator = new ServiceReference1.LanguageServiceClient();
                 objTranslator.GetLanguagesForSpeakCompleted +=
                   new EventHandler<GetLanguagesForSpeakCompletedEventArgs>(
                   translator_GetLanguagesForSpeakCompleted);
@@ -47,7 +47,7 @@ namespace PhoneApp1
 
         void translator_GetLanguagesForSpeakCompleted(object sender, GetLanguagesForSpeakCompletedEventArgs e)
         {
-            var objTranslator = e.UserState as ServiceReference2.LanguageServiceClient;
+            var objTranslator = e.UserState as ServiceReference1.LanguageServiceClient;
             objTranslator.GetLanguageNamesCompleted += new EventHandler<GetLanguageNamesCompletedEventArgs>(translator_GetLanguageNamesCompleted);
             objTranslator.GetLanguageNamesAsync(AppId, "en", e.Result, e.Result);
         }
@@ -75,7 +75,7 @@ namespace PhoneApp1
         private void btnSpeak_Click(object sender, RoutedEventArgs e)
         {
 
-            if (!AppId.Contains("UserYourAppId"))
+            if (!AppId.Contains("5F5C1D99B36EE9D46AF6F54F1796C14B74601FFF"))
             {
                 var languageCode = "en";
                 var language = this.ListLanguages.SelectedItem as TranslatorLanguage;
@@ -83,9 +83,10 @@ namespace PhoneApp1
                 {
                     languageCode = language.Code;
                 }
-                var objTranslator = new ServiceReference2.LanguageServiceClient();
+                var objTranslator = new ServiceReference1.LanguageServiceClient();
                 objTranslator.SpeakCompleted += translator_SpeakCompleted;
                 objTranslator.SpeakAsync(AppId, this.TextToSpeachText.Text, languageCode, "audio/wav");
+              
 
                 panoSpeech.DefaultItem = panoSpeech.Items[(int)2];
             }
@@ -98,7 +99,7 @@ namespace PhoneApp1
 
         }
 
-        void translator_SpeakCompleted(object sender, ServiceReference2.SpeakCompletedEventArgs e)
+        void translator_SpeakCompleted(object sender, ServiceReference1.SpeakCompletedEventArgs e)
         {
             var client = new WebClient();
             client.OpenReadCompleted += ((s, args) =>
@@ -110,4 +111,10 @@ namespace PhoneApp1
 
         }
     }
+}
+
+public class TranslatorLanguage
+{
+    public string Name { get; set; }
+    public string Code { get; set; }
 }

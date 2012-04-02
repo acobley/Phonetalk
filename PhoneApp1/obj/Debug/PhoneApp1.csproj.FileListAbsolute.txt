@@ -1,0 +1,5 @@
+C:\Users\hacku\Documents\Visual Studio 2010\Projects\PhoneApp1\PhoneApp1\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\hacku\Documents\Visual Studio 2010\Projects\PhoneApp1\PhoneApp1\obj\Debug\App.g.i.cs
+C:\Users\hacku\Documents\Visual Studio 2010\Projects\PhoneApp1\PhoneApp1\obj\Debug\MainPage.g.i.cs
+C:\Users\hacku\Documents\Visual Studio 2010\Projects\PhoneApp1\PhoneApp1\obj\Debug\PanoramaPage1.g.i.cs
+C:\Users\hacku\Documents\Visual Studio 2010\Projects\PhoneApp1\PhoneApp1\obj\Debug\PhoneApp1.g.resources
