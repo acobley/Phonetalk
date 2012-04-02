@@ -1,0 +1,66 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="PhoneApp1.PanoramaPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False">
+
+    <!--LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <controls:Panorama Title="text to speech" Name="panoSpeech" 
+           Foreground="Blue" FontFamily="Comic Sans MS">
+            <!--Panorama item one-->
+            <controls:PanoramaItem Header="Language(s)" 
+               Foreground="Plum" FontFamily="DengXian" 
+               FontSize="72">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <DataTemplate x:Key="LanguageTemplate">
+                            <TextBlock Foreground="White" 
+                           Margin="0,0,0,0" Text="{Binding Name}"  />
+                        </DataTemplate>
+                    </StackPanel.Resources>
+                    <ListBox HorizontalAlignment="Left" 
+                       ItemTemplate="{StaticResource LanguageTemplate}" 
+                       Margin="20,10,0,20" 
+                       Name="ListLanguages" Width="441">
+                    </ListBox>
+                </StackPanel>
+            </controls:PanoramaItem>
+
+            <!--Panorama item two-->
+            <controls:PanoramaItem Header="Speech" Foreground="Yellow">
+                <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                    <TextBox Name="TextToSpeachText" 
+                   Text="This Pavan Pareta, Microsoft Most Value able professional. 
+                         He has written an application for windows phone 7" 
+                   TextWrapping="Wrap" Height="350" />
+                    <Button Content="S p e a k" Height="90" 
+                   Margin="0,30,0,0" Name="btnSpeak" 
+                   Width="338" Click="btnSpeak_Click" />
+                </StackPanel>
+            </controls:PanoramaItem>
+
+            <!--Panorama item three-->
+            <controls:PanoramaItem Header="Speak" Foreground="Violet">
+                <StackPanel Orientation="Vertical">
+                    <Image Height="auto" Name="image1" 
+                   Stretch="None" Width="auto" 
+                   Margin="50 60 80 0" Source="/speak.jpg" />
+                </StackPanel>
+            </controls:PanoramaItem>
+        </controls:Panorama>
+    </Grid>
+
+    <!--Panorama-based applications should not show an ApplicationBar-->
+
+</phone:PhoneApplicationPage>
